@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-#submodule
+#submodule2
 CONFIGURE_FLAGS="--enable-static --with-pic"
 
 ARCHS="arm64 armv7s armv7 x86_64 i386"
