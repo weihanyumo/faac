@@ -67,7 +67,17 @@ fi
 XCRUN_SDK=`echo $PLATFORM | tr '[:upper:]' '[:lower:]'`
 CC="xcrun -sdk $XCRUN_SDK clang -Wno-error=unused-command-line-argument-hard-error-in-future"
 AS="$CWD/$SOURCE/extras/gas-preprocessor.pl $CC"
+
+
 CFLAGS="-arch $ARCH $SIMULATOR"
+
+if ! xcodebuild -version | grep "Xcode [1-6]\."
+then
+CFLAGS="$CFLAGS -fembed-bitcode"
+echo "使用了bitcode编译选项"
+echo $CFLAGS
+fi
+
 CXXFLAGS="$CFLAGS"
 LDFLAGS="$CFLAGS"
 
